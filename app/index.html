@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("button").click(function () {
+                $.post("test.asp", {
+                        address: document.getElementById("address").value,
+                    },
+                    function (data) {
+                        alert("Address: " + data);
+                    });
+            });
+        });
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="style/main.css">
+    <title>Backyard Chickens STL</title>
+</head>
+
+<body>
+    <header>
+        <h1>Backyard Chickens</h1>
+    </header>
+    <section class="enter_Address">
+        <form action="/test.asp" method="get" id="address">
+            Enter Address:
+            <input type="text" name="fname">
+            <br>
+        </form>
+        <button onclick="" type="submit" form="address" value="submit">Submit</button>
+    </section>
+    <footer>
+        <h5>Privacy Policy</h5>
+    </footer>
+</body>
+
+</html>
