@@ -90,13 +90,16 @@ body {
 
 .address {
     display: inline-block;
-    align-items: middle;
+    vertical-align: middle;
+    max-width: 700px;
+    margin-top: auto;
+    margin-bottom: auto;
 
 }
 
 .form {
     float: left;
-    align-items: middle;
+    vertical-align: middle;
 
 }
 
@@ -113,8 +116,9 @@ button[type="submit"] {
     height: 60px;
     /* make this the size of your image */
     font-size: 40px;
-    align-self: center;
-
+    vertical-align: middle;
+    margin-top: auto;
+    margin-bottom: auto;
 
 }
 
@@ -124,7 +128,7 @@ input[id="address"],
 textarea {
     background-color: VAR(--blue);
     font-size: 30px;
-    width: 412px;
+    width: 100%
 }
 
 input[class="coopFormInput"],
@@ -159,8 +163,8 @@ textarea {
 
 @media (max-width : 1920px) {
     input {
-        padding-right: 150px;
-        padding-left: 150px;
+        padding-right: 0;
+        padding-left: 0;
     }
 
 }
@@ -256,7 +260,7 @@ screen and (max-height: 700px) {
     textarea {
         background-color: VAR(--blue);
         font-size: 25px;
-        width: 290px;
+        width: 620px;
     }
 
     input[class="coopFormInput"],
