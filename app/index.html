@@ -21,9 +21,9 @@
 
         $(document).ready(function(){
             //Set up button click handler for the search form:
-            $("#submit").click(function(){
+            $("button").click(function(){
                 // Get the person's entered address
-                var input = document.getElementById("address").value;
+                var input = document.getElementById('address').value;
                 // Convert the address into the right format for the OpenStreetMaps search
                 var spacesReplaced = input.replace(" ", "%20");
                 // Send the user's address to OpenStreetMaps and get the returned city
@@ -45,18 +45,18 @@
         });
 
         function calcCityChickens()
-        {   
-            //String used to display the determined chicken eligibility: 
+        {
+            //String used to display the determined chicken eligibility:
             var result_str;
 
-            
+
             //city of saint louis
             //started walter jenkins
             //the city of saint louis requires that the individual have a 4 sq feet to 1 chicken for outdoor space
             //there is also to be 1 sq foot of indoor space for each chickens
             //there is a maximum of 8 chickens allowed in the city of saint louis without a permit
             //the purpose of this code is to estimate based on the user's parameters how many chickens they are allowed to have
-            
+
             //user coop width and length
             var coopWidth = document.forms["coopSTL"]["cwSTL"].value;
             console.log(coopWidth);
@@ -91,10 +91,10 @@
                 if (outsideChickens >= 1 && coopChickens >= 1) {
                     if (outsideChickens >= 8 && coopChickens >= 8)
                         result_str = "You are allowed to have 8 chickens!!!";
-                
+
                     else if ((outsideArea / coopArea) >= 1)
                         result_str = "You are allowed to have " + outsideChickens + " chickens!!!";
-                
+
                     else result_str = "You are allowed to have " + coopChickens + " chickens!!!";
                 }
                 else
@@ -107,7 +107,7 @@
             return result_str;
             //mention permits for more chickens?
         }
-        
+
     </script>
 </head>
 
@@ -141,8 +141,9 @@
         <div class="address">
             <form class="form">
                 <input class="search" type="text" placeholder="Enter your address here" name="address" id="address">
-                <button class="btn" type="submit" id="submit"><i class="fas fa-arrow-circle-right"></i></button>
             </form>
+            <button class="btn" type="submit" id="submit"><i class="fas fa-arrow-circle-right"></i></button>
+
         </div>
         <form id="coopForm" style="display:none;">
             <br />
@@ -157,7 +158,7 @@
             Width:&nbsp;<input type="text" size="3" id="flSTL" class="coopFormInput">
             <br />
             <button type="button" id="calc-chickens" onclick="calcCityChickens();">How many chickens can I have?</button>
-        </form> 
+        </form>
         <div id="mapid" style="width: 600px; height: 400px;"></div>
         <script>
             //Set up map:
@@ -184,7 +185,7 @@
                     //Parse result:
                     //console.log(xHR.responseText);
                     var address=JSON.parse(xHR.responseText).address;
-                    
+
                     var place = address.city;
                     if (address.city == undefined) place = "unincorporated " + address.county;
                     var popup_content = place + ":<br />";
@@ -213,7 +214,7 @@
                             }
                         }
                     }
-                    else { 
+                    else {
                         // Check Illinois too:
                         if (address.city == undefined) {
                             if (illinois_counties[address.county]!=undefined) {
@@ -263,7 +264,7 @@
             }
 
             mymap.on('click', onMapClick);
-            
+
         </script>
     </section>
 

@@ -90,12 +90,13 @@ body {
 
 .address {
     display: inline-block;
-    align-items: center;
+    align-items: middle;
 
 }
 
 .form {
     float: left;
+    align-items: middle;
 
 }
 
