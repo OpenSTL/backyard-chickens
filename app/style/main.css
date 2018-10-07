@@ -139,7 +139,6 @@ button[type="submit"] {
   /* make this the size of your image */
   font-size: 40px;
   align-self: center;
->>>>>>> 02b2d832bf4a028aa807afa4d2401d154f7ae22c
 }
 
 input[id="address"],
@@ -148,11 +147,9 @@ textarea {
     background-color: VAR(--blue);
     font-size: 30px;
     width: 100%
-=======
   background-color: VAR(--blue);
   font-size: 30px;
-  width: 800px;
->>>>>>> 02b2d832bf4a028aa807afa4d2401d154f7ae22c
+  max-width: 600px;
 }
 
 input[class="coopFormInput"],
