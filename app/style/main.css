@@ -82,19 +82,18 @@ body {
 }
 
 .address {
-<<<<<<< HEAD
     display: inline-block;
     vertical-align: middle;
-    max-width: 700px;
     margin-top: auto;
     margin-bottom: auto;
+    width: 70%;
 
 }
 
 .form {
     float: left;
     vertical-align: middle;
-
+    width:100%;
 }
 
 button[type="submit"] {
@@ -123,6 +122,7 @@ button[type="submit"] {
 .form {
   float: left;
   align-items: middle;
+  max-width: 600px;
 }
 
 button[type="submit"] {
@@ -146,10 +146,10 @@ textarea {
 <<<<<<< HEAD
     background-color: VAR(--blue);
     font-size: 30px;
-    width: 100%
-  background-color: VAR(--blue);
-  font-size: 30px;
-  max-width: 600px;
+    background-color: VAR(--blue);
+    font-size: 30px;
+    max-width: 600px;
+
 }
 
 input[class="coopFormInput"],
@@ -161,7 +161,6 @@ textarea {
 
 .search {
   width: 100%;
-  max-width: 1000px;
   border-radius: 150px;
   border: 2px solid var(--dblue);
   text-align: center;
@@ -250,7 +249,6 @@ textarea {
   textarea {
     background-color: VAR(--blue);
     font-size: 30px;
-    width: 700px;
   }
 
   #mapid {
@@ -268,7 +266,7 @@ textarea {
   textarea {
     background-color: VAR(--blue);
     font-size: 30px;
-    width: 600px;
+    width: 800px;
   }
 
   #mapid {
@@ -305,7 +303,6 @@ textarea {
   textarea {
     background-color: VAR(--blue);
     font-size: 30px;
-    width: 400px;
   }
 
   #mapid {
