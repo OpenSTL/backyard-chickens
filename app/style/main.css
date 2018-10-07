@@ -191,9 +191,8 @@ textarea {
         padding-right: 0;
         padding-left: 0;
     }
-=======
+
 @media (max-width: 1920px) {
->>>>>>> 02b2d832bf4a028aa807afa4d2401d154f7ae22c
 
   input[id="address"],
   textarea {
@@ -327,7 +326,7 @@ screen and (max-height: 700px) {
     width: 290px;
   }
 
-<<<<<<< HEAD
+  HEAD
     .instructions {
         font-size: 15px;
         overflow: hidden;
@@ -360,14 +359,12 @@ screen and (max-height: 700px) {
     }
 
 
-=======
   input[class="coopFormInput"],
   textarea {
     padding-left: 0;
     padding-right: 0;
     width: 35px;
   }
->>>>>>> 02b2d832bf4a028aa807afa4d2401d154f7ae22c
 
   .menu a {
     margin-left: 18vw;
