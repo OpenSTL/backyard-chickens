@@ -1,94 +1,88 @@
 :root {
-    --orange: #EB6852;
-    --black: #435363;
-    --blue: #EFF7FE;
-    --dblue: #B3D1ED;
+  --orange: #eb6852;
+  --black: #435363;
+  --blue: #eff7fe;
+  --dblue: #b3d1ed;
 }
 
 body {
-    font-family: 'Roboto', sans-serif;
-    background-color: var(--blue);
-
+  font-family: "Roboto", sans-serif;
+  background-color: var(--blue);
 }
 
 .top {
-    display: grid;
-    background-color: white;
-    margin: -5px;
-    border-bottom: 2px solid var(--black);
-    grid-template-areas:
-        "logo logo menu menu"
+  display: grid;
+  background-color: white;
+  margin: -5px;
+  border-bottom: 2px solid var(--black);
+  grid-template-areas: "logo logo menu menu";
 }
 
 .logo {
-    grid-area: logo;
-    align-self: center;
-    text-transform: uppercase;
+  grid-area: logo;
+  align-self: center;
+  text-transform: uppercase;
 }
 
 .logo h1 {
-    margin-left: 5px;
-    display: inline !important;
-    padding: 0.5px;
-    font-size: 30px;
+  margin-left: 5px;
+  display: inline !important;
+  padding: 0.5px;
+  font-size: 30px;
 }
 
-
-
 #orange {
-    color: var(--orange);
+  color: var(--orange);
 }
 
 #black {
-    color: var(--black);
+  color: var(--black);
 }
-
 
 .menu {
-    grid-area: menu;
+  grid-area: menu;
 }
 
-
 .menu ul {
-
-    display: grid;
-    padding: 0;
-    list-style: none;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    overflow: hidden;
-    justify-items: center;
+  display: grid;
+  padding: 0;
+  list-style: none;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  overflow: hidden;
+  justify-items: center;
 }
 
 .menu a {
-    text-decoration: none;
-    color: var(--black);
-    text-transform: uppercase;
-    font-size: 25px;
-}
-
-
-
-.middle {
-    display: grid;
-    max-width: 1000px;
-    margin: 200px auto;
-    justify-items: center !important;
-    text-align: center;
-    grid-template-columns: repeat(auto-fit, minmax (auto 1fr));
-    background-color: var(--blue);
-}
-
-.instructions {
-    font-size: 20px;
-    overflow: nowrap;
-    text-align: center;
+  text-decoration: none;
+  color: var(--black);
+  text-transform: uppercase;
+  font-size: 25px;
 }
 
 .middle>* {
-    grid-column: 2/-2;
+  grid-column: 2/-2;
+}
+
+.middle {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+  max-width: 1000px;
+  margin: 10px auto;
+  justify-items: center !important;
+  text-align: center;
+  background-color: var(--blue);
+  margin-bottom: 25px;
+}
+
+.instructions {
+  font-size: 20px;
+  overflow: nowrap;
+  text-align: center;
+  margin: 10px;
 }
 
 .address {
+<<<<<<< HEAD
     display: inline-block;
     vertical-align: middle;
     max-width: 700px;
@@ -120,137 +114,225 @@ button[type="submit"] {
     margin-top: auto;
     margin-bottom: auto;
 
+=======
+  display: inline-block;
+  align-items: middle;
+  margin: 10px;
 }
 
+.form {
+  float: left;
+  align-items: middle;
+}
 
+button[type="submit"] {
+  width: 60px;
+  background-repeat: no-repeat;
+  background-color: var(--blue);
+  background-position: 0px 0px;
+  /* equivalent to 'top left' */
+  border: none;
+  /* assuming we don't want any borders */
+  cursor: pointer;
+  /* make the cursor like hovering over an <a> element */
+  height: 50px;
+  /* make this the size of your image */
+  font-size: 40px;
+  align-self: center;
+>>>>>>> 02b2d832bf4a028aa807afa4d2401d154f7ae22c
+}
 
 input[id="address"],
 textarea {
+<<<<<<< HEAD
     background-color: VAR(--blue);
     font-size: 30px;
     width: 100%
+=======
+  background-color: VAR(--blue);
+  font-size: 30px;
+  width: 800px;
+>>>>>>> 02b2d832bf4a028aa807afa4d2401d154f7ae22c
 }
 
 input[class="coopFormInput"],
 textarea {
-    padding-left: 0;
-    padding-right: 0;
-    width: 35px;
+  padding-left: 0;
+  padding-right: 0;
+  width: 35px;
 }
 
 .search {
-    width: 100%;
-    max-width: 1000px;
-    border-radius: 150px;
-    border: 2px solid var(--dblue);
-    text-align: center;
+  width: 100%;
+  max-width: 1000px;
+  border-radius: 150px;
+  border: 2px solid var(--dblue);
+  text-align: center;
 }
 
+#mapid {
+  height: 768px;
+  width: 1024px;
+}
 
 .end {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
-    bottom: 0;
-    width: 100%;
-    height: 100px;
-    margin-left: -60px;
-    margin-top: 450px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+  bottom: 0;
+  width: 100%;
+  height: 100px;
+  margin-left: -60px;
 }
 
 .chicken2 {
-    transform: scaleX(-1);
+  transform: scaleX(-1);
 }
 
+<<<<<<< HEAD
 @media (max-width : 1920px) {
     input {
         padding-right: 0;
         padding-left: 0;
     }
+=======
+@media (max-width: 1920px) {
+>>>>>>> 02b2d832bf4a028aa807afa4d2401d154f7ae22c
 
-}
+  input[id="address"],
+  textarea {
+    background-color: VAR(--blue);
+    font-size: 30px;
+    width: 800px;
+  }
 
-@media (max-width: 1100px) {
+  @media (max-width: 1100px) {
     .top>.logo {
-        justify-self: center;
+      justify-self: center;
     }
 
     .top {
-        grid-template-areas:
-            "logo"
-            "menu"
+      grid-template-areas:
+        "logo"
+        "menu";
     }
 
-    input {
-        padding-right: 150px;
-        padding-left: 150px;
+    #mapid {
+      height: 600px;
+      width: 900px;
     }
-
-
+  }
 }
 
 @media (max-width: 940px) {
-    input {
-        padding-right: 6px;
-        padding-left: 6px;
-    }
+
+  input[id="address"],
+  textarea {
+    background-color: VAR(--blue);
+    font-size: 30px;
+    width: 700px;
+  }
+
+  #mapid {
+    height: 600px;
+    width: 800px;
+  }
 }
 
+@media (max-width: 800px) {
+  .top {
+    justify-items: center;
+  }
 
-@media (max-width: 768px) {
-    .top {
-        justify-items: center;
-    }
+  .end>img {
+    background-color: var(--blue);
+    width: 100%;
+    height: 100%;
+  }
 
-    .end>img {
-        background-color: var(--blue);
-        width: 100%;
-        height: 100%;
-    }
+  input[id="address"],
+  textarea {
+    background-color: VAR(--blue);
+    font-size: 30px;
+    width: 700px;
+  }
+
+  #mapid {
+    height: 600px;
+    width: 700px;
+  }
 }
 
 @media (max-width: 750px) {
-    .end>img {
-        height: -100vh;
-    }
+  .end>img {
+    height: -100vh;
+  }
 
+  input[id="address"],
+  textarea {
+    background-color: VAR(--blue);
+    font-size: 30px;
+    width: 600px;
+  }
+
+  #mapid {
+    height: 500px;
+    width: 600px;
+  }
 }
 
 @media (max-width: 528px) {
+  .top {
+    grid-template-areas:
+      "logo"
+      "menu";
+  }
 
+  .menu {
+    justify-self: end;
+    margin-right: 5px;
+  }
 
-    .top {
-        grid-template-areas:
-            "logo"
-            "menu"
+  .menu ul {
+    margin-right: 28vw;
+  }
 
-    }
+  .middle {
+    margin-top: 60px;
+  }
 
-    .menu {
-        justify-self: end;
-        margin-right: 5px;
-    }
+  .end>img {
+    margin-left: 20px;
+  }
 
+  input[id="address"],
+  textarea {
+    background-color: VAR(--blue);
+    font-size: 30px;
+    width: 400px;
+  }
 
-
-    .menu ul {
-        margin-right: 28vw;
-    }
-
-    .middle {
-        margin-top: 60px;
-    }
-
-    .end>img {
-        margin-left: 20px;
-    }
-
+  #mapid {
+    height: 500px;
+    width: 500px;
+  }
 }
 
-
-@media (max-width : 320px),
+@media (max-width: 320px),
 screen and (max-height: 700px) {
+  .instructions {
+    margin-top: -50px;
+    font-size: 15px;
+    overflow: hidden;
+  }
 
+  input[type="text"],
+  textarea {
+    background-color: VAR(--blue);
+    font-size: 25px;
+    width: 290px;
+  }
 
+<<<<<<< HEAD
     .instructions {
         font-size: 15px;
         overflow: hidden;
@@ -283,19 +365,43 @@ screen and (max-height: 700px) {
     }
 
 
+=======
+  input[class="coopFormInput"],
+  textarea {
+    padding-left: 0;
+    padding-right: 0;
+    width: 35px;
+  }
+>>>>>>> 02b2d832bf4a028aa807afa4d2401d154f7ae22c
 
-    .end {
-        margin-top: 5px;
-    }
+  .menu a {
+    margin-left: 18vw;
+  }
 
-    .end>img {
-        margin-top: 18px;
-    }
+  .menu>* {
+    margin-left: 8vw;
+  }
 
-    body {
-        padding-top: -500px;
-        top: 0;
-    },
+  ul {
+    margin-right: 10vw;
+  }
 
+  .end {
+    margin-top: 5px;
+  }
 
+  .end>img {
+    margin-top: 18px;
+    height: 60px;
+  }
+
+  body {
+    padding-top: -500px;
+    top: 0;
+  }
+
+  #mapid {
+    height: 380px;
+    width: 250px;
+  }
 }
