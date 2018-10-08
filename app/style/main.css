@@ -1,3 +1,4 @@
+
 :root {
   --orange: #eb6852;
   --black: #435363;
@@ -59,7 +60,7 @@ body {
   font-size: 25px;
 }
 
-.middle > * {
+.middle>* {
   grid-column: 2/-2;
 }
 
@@ -82,29 +83,60 @@ body {
 }
 
 .address {
-  display: inline-block;
-  vertical-align: middle;
-  margin-top: auto;
-  margin-bottom: auto;
-  width: 65%;
+    display: inline-block;
+    vertical-align: middle;
+    margin-top: auto;
+    margin-bottom: auto;
+    width: 65%;
+
 }
 
 .form {
-  float: left;
-  vertical-align: middle;
-  width: 100%;
+    float: left;
+    vertical-align: middle;
+    width:100%;
 }
 
-#map-container {
-  width: 100%;
-  height: 600px;
+
+#map-container{
+  width:100%;
+  height:600px;
 }
 
-#mapid {
+#mapid{
   width: 80%;
   height: 600px;
   margin-left: auto;
   margin-right: auto;
+}
+
+button[type="submit"] {
+    width: 60px;
+    background-repeat: no-repeat;
+    background-color: var(--blue);
+    background-position: 0px 0px;
+    /* equivalent to 'top left' */
+    border: none;
+    /* assuming we don't want any borders */
+    cursor: pointer;
+    /* make the cursor like hovering over an <a> element */
+    height: 60px;
+    /* make this the size of your image */
+    font-size: 40px;
+    vertical-align: middle;
+    margin-top: auto;
+    margin-bottom: auto;
+
+=======
+  display: inline-block;
+  align-items: middle;
+  margin: 10px;
+}
+
+.form {
+  float: left;
+  align-items: middle;
+  max-width: 600px;
 }
 
 button[type="submit"] {
@@ -117,30 +149,21 @@ button[type="submit"] {
   /* assuming we don't want any borders */
   cursor: pointer;
   /* make the cursor like hovering over an <a> element */
-  height: 60px;
+  height: 50px;
   /* make this the size of your image */
   font-size: 40px;
-  vertical-align: middle;
-  margin-top: auto;
-  margin-bottom: auto;
-  display: inline-block;
-  align-items: middle;
-  margin: 10px;
-}
-
-.form {
-  float: left;
-  max-width: 680px;
+  align-self: center;
 }
 
 input[id="address"],
 textarea {
-  background-color: VAR(--blue);
-  font-size: 30px;
-  background-color: VAR(--blue);
-  font-size: 30px;
-  width: 690px;
-  margin-top: 20px;
+<<<<<<< HEAD
+    background-color: VAR(--blue);
+    font-size: 30px;
+    background-color: VAR(--blue);
+    font-size: 30px;
+    max-width: 600px;
+
 }
 
 input[class="coopFormInput"],
@@ -151,11 +174,12 @@ textarea {
 }
 
 .search {
-  width: ;
+  width: 100%;
   border-radius: 150px;
   border: 2px solid var(--dblue);
   text-align: center;
 }
+
 
 .end {
   display: grid;
@@ -163,7 +187,6 @@ textarea {
   bottom: 0;
   width: 100%;
   height: 100px;
-  margin-top: 180px;
   margin-left: -60px;
 }
 
@@ -171,13 +194,48 @@ textarea {
   transform: scaleX(-1);
 }
 
-@media (max-width: 940px) {
+<<<<<<< HEAD
+@media (max-width : 1920px) {
+    input {
+        padding-right: 0;
+        padding-left: 0;
+    }
+=======
+@media (max-width: 1920px) {
+>>>>>>> 02b2d832bf4a028aa807afa4d2401d154f7ae22c
+
   input[id="address"],
   textarea {
     background-color: VAR(--blue);
     font-size: 30px;
-    width: 400px;
+    width: 800px;
   }
+
+  @media (max-width: 1100px) {
+    .top>.logo {
+      justify-self: center;
+    }
+
+    .top {
+      grid-template-areas:
+        "logo"
+        "menu";
+    }
+
+
+  }
+}
+
+@media (max-width: 940px) {
+
+  input[id="address"],
+  textarea {
+    background-color: VAR(--blue);
+    font-size: 30px;
+    width: 700px;
+  }
+
+
 }
 
 @media (max-width: 800px) {
@@ -185,7 +243,7 @@ textarea {
     justify-items: center;
   }
 
-  .end > img {
+  .end>img {
     background-color: var(--blue);
     width: 100%;
     height: 100%;
@@ -196,10 +254,12 @@ textarea {
     background-color: VAR(--blue);
     font-size: 30px;
   }
+
+
 }
 
 @media (max-width: 750px) {
-  .end > img {
+  .end>img {
     height: -100vh;
   }
 
@@ -207,10 +267,12 @@ textarea {
   textarea {
     background-color: VAR(--blue);
     font-size: 30px;
+    width: 800px;
   }
+
 }
 
-@media (max-width: 510px) {
+@media (max-width: 528px) {
   .top {
     grid-template-areas:
       "logo"
@@ -230,7 +292,7 @@ textarea {
     margin-top: 60px;
   }
 
-  .end > img {
+  .end>img {
     margin-left: 20px;
   }
 
@@ -239,9 +301,12 @@ textarea {
     background-color: VAR(--blue);
     font-size: 30px;
   }
+
+
 }
 
-@media (max-width: 320px), screen and (max-height: 700px) {
+@media (max-width: 320px),
+screen and (max-height: 700px) {
   .instructions {
     margin-top: -50px;
     font-size: 15px;
@@ -255,55 +320,53 @@ textarea {
     width: 290px;
   }
 
-  head .instructions {
-    font-size: 15px;
-    overflow: hidden;
-  }
+<<<<<<< HEAD
+    .instructions {
+        font-size: 15px;
+        overflow: hidden;
+    }
 
-  input[type="text"],
-  textarea {
-    background-color: VAR(--blue);
-    font-size: 25px;
-  }
+    input[type="text"],
+    textarea {
+        background-color: VAR(--blue);
+        font-size: 25px;
+        width: 620px;
+    }
 
+    input[class="coopFormInput"],
+    textarea {
+        padding-left: 0;
+        padding-right: 0;
+        width: 35px;
+    }
+
+    .menu a {
+        margin-left: 18vw;
+    }
+
+    .menu>* {
+        margin-left: 8vw;
+    }
+
+    ul {
+        margin-right: 10vw;
+    }
+
+
+=======
   input[class="coopFormInput"],
   textarea {
     padding-left: 0;
     padding-right: 0;
     width: 35px;
   }
+>>>>>>> 02b2d832bf4a028aa807afa4d2401d154f7ae22c
 
   .menu a {
     margin-left: 18vw;
   }
 
-  .menu > * {
-    margin-left: 8vw;
-  }
-
-  ul {
-    margin-right: 10vw;
-  }
-
-  input[id="address"],
-  textarea {
-    background-color: VAR(--blue);
-    font-size: 30px;
-    width: 200px;
-  }
-
-  input[class="coopFormInput"],
-  textarea {
-    padding-left: 0;
-    padding-right: 0;
-    width: 35px;
-  }
-
-  .menu a {
-    margin-left: 18vw;
-  }
-
-  .menu > * {
+  .menu>* {
     margin-left: 8vw;
   }
 
@@ -315,7 +378,7 @@ textarea {
     margin-top: 5px;
   }
 
-  .end > img {
+  .end>img {
     margin-top: 18px;
     height: 60px;
   }
@@ -324,4 +387,6 @@ textarea {
     padding-top: -500px;
     top: 0;
   }
+
+
 }
