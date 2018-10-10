@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,7 +19,6 @@
     <title>Backyard Chickens STL</title>
 
     <script>
-
         $(document).ready(function () {
             //Set up button click handler for the search form:
             $("button").click(function () {
@@ -34,32 +34,25 @@
                         console.log(data);
                         var city = data[0].address.city;
                         //console.log(city);
-
                         //document.getElementById("result").innerHTML = " is in "+city;
-
                         //Update info bubble on map:
                         showRegs(L.latLng(data[0].lat, data[0].lon));
                         //^^this only works because it can only get run after the body script tag initializes showCity
                     });
             });
         });
-
         function calcCityChickens() {
             //String used to display the determined chicken eligibility:
             var result_str;
-
-
             //city of saint louis
             //started walter jenkins
             //the city of saint louis requires that the individual have a 4 sq feet to 1 chicken for outdoor space
             //there is also to be 1 sq foot of indoor space for each chickens
             //there is a maximum of 8 chickens allowed in the city of saint louis without a permit
             //the purpose of this code is to estimate based on the user's parameters how many chickens they are allowed to have
-
             //user coop width and length
             var coopWidth = document.forms["coopSTL"]["cwSTL"].value;
             console.log(coopWidth);
-
             var input_valid = true;
             if (coopWidth == "") //needs to ensure that it is also an integer
                 input_valid = false;
@@ -73,7 +66,6 @@
             var fenceLength = document.forms["coopSTL"]["flSTL"].value;
             if (fenceLength == "") //needs to ensure that it is also an integer
                 input_valid = false;
-
             if (input_valid) {
                 //calculation of fence and coop area
                 var fenceArea = fenceWidth * fenceLength;
@@ -83,16 +75,13 @@
                 //calculation of the amount of chickens for both the inside and outside separately
                 var outsideChickens = Math.floor((outsideArea / 4));
                 var coopChickens = Math.floor((coopArea / 1));
-
                 //determining if you use the outsideChickens number or coopChickens number
                 //needs to have ability to cap at 8
                 if (outsideChickens >= 1 && coopChickens >= 1) {
                     if (outsideChickens >= 8 && coopChickens >= 8)
                         result_str = "You are allowed to have 8 chickens!!!";
-
                     else if ((outsideArea / coopArea) >= 1)
                         result_str = "You are allowed to have " + outsideChickens + " chickens!!!";
-
                     else result_str = "You are allowed to have " + coopChickens + " chickens!!!";
                 }
                 else
@@ -105,7 +94,6 @@
             return result_str;
             //mention permits for more chickens?
         }
-
     </script>
 </head>
 
@@ -162,8 +150,6 @@
         <script>
             //Set up map:
             var mymap = L.map('mapid').setView([38.66085, -90.362549], 11);
-
-
             L.tileLayer(
                 'https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
                     maxZoom: 18,
@@ -172,10 +158,8 @@
                         'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
                     id: 'mapbox.streets'
                 }).addTo(mymap);
-
             //Initialize popup object to show information on the map:
             var popup = L.popup();
-
             //Show chicken regulations at coordinates:
             function showRegs(coords) {
                 //Send the coordinates to OpenStreetMaps and get the returned city:
@@ -186,11 +170,9 @@
                     //Parse result:
                     //console.log(xHR.responseText);
                     var address = JSON.parse(xHR.responseText).address;
-
                     var place = address.city;
                     if (address.city == undefined) place = "unincorporated " + address.county;
                     var popup_content = place + ":<br />";
-
                     // Look up the regulations string for resulting location using JS Objects (hashtables):
                     if (address.state == "Missouri") {
                         if (address.city == undefined) {
@@ -234,7 +216,6 @@
                         popup_content += '<br /><br />Source:<br /><a href="' + source_url + '">' + source_url +
                             '</a>';
                     }
-
                     //Display result on the map:
                     popup.setContent(popup_content);
                     popup.setLatLng(coords);
@@ -245,7 +226,6 @@
                 xHR.send();
                 //^^(I don't usually like using extra libraries like jQuery, so I used plain Javascript.)
             }
-
             //Set up handler function for click events:
             function onMapClick(e) {
                 /*
@@ -255,11 +235,9 @@
                     .setContent("You clicked the map at " + e.latlng.toString())
                     .openOn(mymap);
                 */
-
                 //Get containing city and display it on the map:
                 showRegs(e.latlng);
             }
-
             mymap.on('click', onMapClick);
         </script>
     </section>
