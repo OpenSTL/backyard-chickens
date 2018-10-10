@@ -83,7 +83,7 @@ body {
 }
 
 .address {
-    display: inline-block;
+    display: inline;
     vertical-align: middle;
     margin-top: auto;
     margin-bottom: auto;
@@ -124,13 +124,12 @@ button[type="submit"] {
     height: 60px;
     /* make this the size of your image */
     font-size: 40px;
-    vertical-align: middle;
     margin-top: auto;
     margin-bottom: auto;
+    /*vertical-align: top;
+    display: inline;*/
 
 =======
-  display: inline-block;
-  align-items: middle;
   margin: 10px;
 }
 
@@ -155,6 +154,8 @@ button[type="submit"] {
   /* make this the size of your image */
   font-size: 40px;
   align-self: center;
+  vertical-align: top;
+  display: inline;
 }
 
 input[id="address"],
@@ -180,6 +181,8 @@ textarea {
   border-radius: 150px;
   border: 2px solid var(--dblue);
   text-align: center;
+  display: inline
+  vertical-align: top;
 }
 
 
