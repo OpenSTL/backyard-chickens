@@ -19,28 +19,35 @@
     <title>Backyard Chickens STL</title>
 
     <script>
+        // Address search function
+        function addressSearch() {
+            // Get the person's entered address
+            var input = document.getElementById('address').value;
+            // Convert the address into the right format for the OpenStreetMaps search
+            var spacesReplaced = input.replace(" ", "%20");
+            // Send the user's address to OpenStreetMaps and get the returned city
+            var searchURL = "https://nominatim.openstreetmap.org/search/" + input + "?format=json&addressdetails=1&limit=1&polygon_svg=1";
+            //console.log(searchURL);
+            $.post(searchURL,
+                function (data) {
+                    console.log(data);
+                    var city = data[0].address.city;
+                    //console.log(city);
+                    //document.getElementById("result").innerHTML = " is in "+city;
+                    //Update info bubble on map:
+                    showRegs(L.latLng(data[0].lat, data[0].lon));
+                    //^^this only works because it can only get run after the body script tag initializes showCity
+                });
+            return false;
+        }
         $(document).ready(function () {
-            //Set up button click handler for the search form:
+            // Set up button click handler for the search form
             $("button").click(function () {
-                // Get the person's entered address
-                var input = document.getElementById('address').value;
-                // Convert the address into the right format for the OpenStreetMaps search
-                var spacesReplaced = input.replace(" ", "%20");
-                // Send the user's address to OpenStreetMaps and get the returned city
-                var searchURL = "https://nominatim.openstreetmap.org/search/" + input + "?format=json&addressdetails=1&limit=1&polygon_svg=1";
-                //console.log(searchURL);
-                $.post(searchURL,
-                    function (data) {
-                        console.log(data);
-                        var city = data[0].address.city;
-                        //console.log(city);
-                        //document.getElementById("result").innerHTML = " is in "+city;
-                        //Update info bubble on map:
-                        showRegs(L.latLng(data[0].lat, data[0].lon));
-                        //^^this only works because it can only get run after the body script tag initializes showCity
-                    });
+                addressSearch();
             });
         });
+
+        // Function to calculate how many chickens allowed for a St. Louis City address
         function calcCityChickens() {
             //String used to display the determined chicken eligibility:
             var result_str;
@@ -125,7 +132,7 @@
 
 
         <div class="address">
-            <form class="form">
+            <form class="form" action="#" onSubmit="addressSearch()">
                 <input class="search" type="text" placeholder="Enter your address to find out" name="address" id="address">
             </form>
             <div>
