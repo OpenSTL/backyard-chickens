@@ -80,6 +80,10 @@
             $("button").click(function () {
                 addressSearch();
             });
+
+            $("#searchSubmit").on("submit", function (e) {
+                e.preventDefault();
+            });;
         });
 
         // Function to calculate how many chickens allowed for a St. Louis City address
@@ -167,7 +171,7 @@
 
 
         <div class="address">
-            <form class="form" action="#" onSubmit="addressSearch()">
+            <form class="form" action="#" onSubmit="addressSearch()" id="searchSubmit">
                 <input class="search" type="text" placeholder="Enter your address to find out" name="address" id="address">
             </form>
             <div>
