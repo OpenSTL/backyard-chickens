@@ -1,7 +1,5 @@
 $(document).ready(function () {
-
-
-
+  
   //Set up map:
   var mymap = L.map('mapid').setView([38.66085, -90.362549], 11);
   L.tileLayer(
@@ -16,6 +14,9 @@ $(document).ready(function () {
   //Initialize popup object to show information on the map:
   var popup = L.popup();
 
+  /**
+   * Given all the location information, creates the formatted text to go into the popup.
+   */
   function parseResult(city, county, state, popup, map, coords) {
     //Parse result:
     var place = city;
@@ -88,7 +89,6 @@ $(document).ready(function () {
    */
   function showRegsAddress(input) {
     arcgisRest.geocode(input).then(function (data) {
-      console.log('data', data);
       showRegs(L.latLng(data.candidates[0].location.y, data.candidates[0].location.x));
     });
   }
@@ -107,14 +107,11 @@ $(document).ready(function () {
   // SETUP AUTOCOMPLETE
   $("#address").autocomplete({
     source: function (request, response) {
-      console.log('autocomplete request:', request);
-
       arcgisRest.suggest(request.term, {
         params: {
-          location: '-90.18,38.62'
+          location: '-90.18,38.62' // origin point location that is used to sort geocoding candidates based on their proximity to the location
         }
       }).then(function (data) {
-        console.log('data', data);
         response(data.suggestions.map(function (suggestionObject) {
           return {
             label: suggestionObject.text,
