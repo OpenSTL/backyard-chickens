@@ -16,7 +16,42 @@
     <link rel="stylesheet" type="text/css" href="style/main.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
         crossorigin="anonymous">
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.51.0/mapbox-gl.css' rel='stylesheet' />
+
     <title>Backyard Chickens STL</title>
+    <div id='map'></div>
+    <div id='geocoder' class='geocoder'></div>
+
+    <script>
+    mapboxgl.accessToken = 'pk.eyJ1Ijoid2FsdGVyaiIsImEiOiJxYTduRWxrIn0.7BNUBklS71FMHYbuOww02A';
+    var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/streets-v9',
+        center: [-79.4512, 43.6568],
+        zoom: 13
+    });
+
+    var geocoder = new MapboxGeocoder({
+        accessToken: mapboxgl.accessToken
+    });
+
+    document.getElementById('geocoder').appendChild(geocoder.onAdd(map));
+    </script>
+
+
+    <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.3.0/mapbox-gl-geocoder.min.js'></script>
+    <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.3.0/mapbox-gl-geocoder.css' type='text/css' />
+    <style>
+        .geocoder {
+            position:absolute;
+            z-index:1;
+            width:50%;
+            left:50%;
+            margin-left:-25%;
+            top:20px;
+        }
+        .mapboxgl-ctrl-geocoder { min-width:100%; }
+    </style>
 
     <script>
         $(document).ready(function () {
