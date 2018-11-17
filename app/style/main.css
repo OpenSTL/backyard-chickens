@@ -1,12 +1,14 @@
-
-
-
 :root {
   --orange: #eb6852;
   --black: #435363;
   --blue: #eff7fe;
   --dblue: #b3d1ed;
 }
+
+/* Fixes the autocomplete box over the map: */
+.ui-autocomplete { 
+  z-index: 400 !important;
+} 
 
 body {
   font-family: "Roboto", sans-serif;
@@ -85,21 +87,12 @@ body {
 }
 
 .address {
-<<<<<<< HEAD
-    display: inline;
-    vertical-align: middle;
-    margin-top: auto;
-    margin-bottom: auto;
-    align: center;
-    width: 65%;
-=======
   display: inline;
   vertical-align: middle;
   margin-top: auto;
   margin-bottom: auto;
+  align: center;
   width: 65%;
->>>>>>> faaaa6f564c9268ce3f393f2e6902ef706e4eaf2
-
 }
 
 .form {
@@ -207,52 +200,35 @@ textarea {
   transform: scaleX(-1);
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 @media (max-width : 1920px) {
-    input {
-        padding-right: 0;
-        padding-left: 0;
-    }
-=======
+  input {
+      padding-right: 0;
+      padding-left: 0;
+  }
+}
 @media (max-width: 1920px) {
-
-
-=======
-<<<<<<< HEAD @media (max-width : 1920px) {
   input {
     padding-right: 0;
     padding-left: 0;
   }
->>>>>>> faaaa6f564c9268ce3f393f2e6902ef706e4eaf2
 
-  =======@media (max-width: 1920px) {
-
-    >>>>>>>02b2d832bf4a028aa807afa4d2401d154f7ae22c input[id="address"],
-    textarea {
-      background-color: VAR(--blue);
-      font-size: 30px;
-      width: 800px;
-    }
-
-    @media (max-width: 1100px) {
-      .top>.logo {
-        justify-self: center;
-      }
-
-      .top {
-        grid-template-areas:
-          "logo"
-          "menu";
-      }
-
-
-<<<<<<< HEAD
-
-=======
-    }
+  textarea {
+    background-color: VAR(--blue);
+    font-size: 30px;
+    width: 800px;
   }
->>>>>>> faaaa6f564c9268ce3f393f2e6902ef706e4eaf2
+}
+@media (max-width: 1100px) {
+  .top>.logo {
+    justify-self: center;
+  }
+
+  .top {
+    grid-template-areas:
+      "logo"
+      "menu";
+  }
+}
 
   @media (max-width: 940px) {
 
@@ -266,32 +242,23 @@ textarea {
 
   }
 
-<<<<<<< HEAD
-=======
-  @media (max-width: 800px) {
-    .top {
-      justify-items: center;
-    }
->>>>>>> faaaa6f564c9268ce3f393f2e6902ef706e4eaf2
-
-    .end>img {
-      background-color: var(--blue);
-      width: 100%;
-      height: 100%;
-    }
-
-    input[id="address"],
-    textarea {
-      background-color: VAR(--blue);
-      font-size: 30px;
-    }
-
-
-<<<<<<< HEAD
-
-=======
+@media (max-width: 800px) {
+  .top {
+    justify-items: center;
   }
->>>>>>> faaaa6f564c9268ce3f393f2e6902ef706e4eaf2
+
+  .end>img {
+    background-color: var(--blue);
+    width: 100%;
+    height: 100%;
+  }
+
+  input[id="address"],
+  textarea {
+    background-color: VAR(--blue);
+    font-size: 30px;
+  }
+}
 
   @media (max-width: 750px) {
     .end>img {
@@ -323,12 +290,9 @@ textarea {
       margin-right: 28vw;
     }
 
-<<<<<<< HEAD
-=======
     .middle {
       margin-top: 60px;
     }
->>>>>>> faaaa6f564c9268ce3f393f2e6902ef706e4eaf2
 
     .end>img {
       margin-left: 20px;
@@ -358,7 +322,7 @@ textarea {
       width: 290px;
     }
 
-    <<<<<<< HEAD .instructions {
+    .instructions {
       font-size: 15px;
       overflow: hidden;
     }
@@ -390,7 +354,7 @@ textarea {
     }
 
 
-    =======input[class="coopFormInput"],
+    input[class="coopFormInput"],
     textarea {
       padding-left: 0;
       padding-right: 0;
@@ -422,6 +386,4 @@ textarea {
       padding-top: -500px;
       top: 0;
     }
-
-
   }

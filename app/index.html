@@ -3,144 +3,40 @@
 <html lang="en">
 
 <head>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
-        crossorigin="" />
-    <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js" integrity="sha512-/Nsx9X4HebavoBvEBuyp3I7od5tA0UzAxs+j83KgC8PU0kgB4XiK4Lfe4y4cgBtaRJQEIFCW+oC506aPT2L1zw=="
-        crossorigin=""></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"> </script>
-    <script src="regs_data.js"> </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+    <!-- arcgis-rest-request and arcgis-rest-geocoder included for geocoding, reverse geocoding, and suggest (autocomplete) -->
+    <script src="https://unpkg.com/@esri/arcgis-rest-request@1.13.2/dist/umd/request.umd.min.js"></script>
+    <script src="https://unpkg.com/@esri/arcgis-rest-geocoder@1.13.2/dist/umd/geocoder.umd.min.js"></script>
+
+    <!-- fonts: -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700,900,900i" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+    <!-- Leaflet for the Map: -->
+    <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js" integrity="sha512-/Nsx9X4HebavoBvEBuyp3I7od5tA0UzAxs+j83KgC8PU0kgB4XiK4Lfe4y4cgBtaRJQEIFCW+oC506aPT2L1zw==" crossorigin=""></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ==" crossorigin="" />
+    
+    <!-- Our main application CSS (styles) -->
     <link rel="stylesheet" type="text/css" href="style/main.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
-        crossorigin="anonymous">
-    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.51.0/mapbox-gl.css' rel='stylesheet' />
+
+    <!-- Our main application JavaScript files: -->
+    <script src="regs_data.js"></script>
+    <script src="main.js"></script>
+
+    <!-- JQuery-UI included for autocomplete: -->
+    <link href="lib/jquery-ui.min.css" rel="stylesheet">
+    <script src="lib/jquery-ui.min.js"></script>
+
 
     <title>Backyard Chickens STL</title>
     <div id='map'></div>
     <div id='geocoder' class='geocoder'></div>
 
-    <script>
-    mapboxgl.accessToken = 'pk.eyJ1Ijoid2FsdGVyaiIsImEiOiJxYTduRWxrIn0.7BNUBklS71FMHYbuOww02A';
-    var map = new mapboxgl.Map({
-        container: 'map',
-        style: 'mapbox://styles/mapbox/streets-v9',
-        center: [-79.4512, 43.6568],
-        zoom: 13
-    });
-
-    var geocoder = new MapboxGeocoder({
-        accessToken: mapboxgl.accessToken
-    });
-
-    document.getElementById('geocoder').appendChild(geocoder.onAdd(map));
-    </script>
-
-
-    <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.3.0/mapbox-gl-geocoder.min.js'></script>
-    <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.3.0/mapbox-gl-geocoder.css' type='text/css' />
-    <style>
-        .geocoder {
-            position:absolute;
-            z-index:1;
-            width:50%;
-            left:50%;
-            margin-left:-25%;
-            top:20px;
-        }
-        .mapboxgl-ctrl-geocoder { min-width:100%; }
-    </style>
-
-    <script>
-        // Address search function
-        function addressSearch() {
-            // Get the person's entered address
-            var input = document.getElementById('address').value;
-            // Convert the address into the right format for the OpenStreetMaps search
-            var spacesReplaced = input.replace(" ", "%20");
-            // Send the user's address to OpenStreetMaps and get the returned city
-            var searchURL = "https://nominatim.openstreetmap.org/search/" + input + "?format=json&addressdetails=1&limit=1&polygon_svg=1";
-            //console.log(searchURL);
-            $.post(searchURL,
-                function (data) {
-                    console.log(data);
-                    var city = data[0].address.city;
-                    //console.log(city);
-                    //document.getElementById("result").innerHTML = " is in "+city;
-                    //Update info bubble on map:
-                    showRegs(L.latLng(data[0].lat, data[0].lon));
-                    //^^this only works because it can only get run after the body script tag initializes showCity
-                });
-            return false;
-        }
-        $(document).ready(function () {
-            // Set up button click handler for the search form
-            $("button").click(function () {
-                addressSearch();
-            });
-
-            $("#searchSubmit").on("submit", function (e) {
-                e.preventDefault();
-            });;
-        });
-
-        // Function to calculate how many chickens allowed for a St. Louis City address
-        function calcCityChickens() {
-            //String used to display the determined chicken eligibility:
-            var result_str;
-            //city of saint louis
-            //started walter jenkins
-            //the city of saint louis requires that the individual have a 4 sq feet to 1 chicken for outdoor space
-            //there is also to be 1 sq foot of indoor space for each chickens
-            //there is a maximum of 8 chickens allowed in the city of saint louis without a permit
-            //the purpose of this code is to estimate based on the user's parameters how many chickens they are allowed to have
-            //user coop width and length
-            var coopWidth = document.forms["coopSTL"]["cwSTL"].value;
-            console.log(coopWidth);
-            var input_valid = true;
-            if (coopWidth == "") //needs to ensure that it is also an integer
-                input_valid = false;
-            var coopLength = document.forms["coopSTL"]["clSTL"].value;
-            if (coopLength == "") //needs to ensure that it is also an integer
-                input_valid = false;
-            //user fence width and length
-            var fenceWidth = document.forms["coopSTL"]["fwSTL"].value;
-            if (fenceWidth == "") //needs to ensure that it is also an integer
-                input_valid = false;
-            var fenceLength = document.forms["coopSTL"]["flSTL"].value;
-            if (fenceLength == "") //needs to ensure that it is also an integer
-                input_valid = false;
-            if (input_valid) {
-                //calculation of fence and coop area
-                var fenceArea = fenceWidth * fenceLength;
-                var coopArea = coopLength * coopWidth;
-                //calculation of outside space minus the footprint of the coop
-                var outsideArea = fenceArea - coopArea;
-                //calculation of the amount of chickens for both the inside and outside separately
-                var outsideChickens = Math.floor((outsideArea / 4));
-                var coopChickens = Math.floor((coopArea / 1));
-                //determining if you use the outsideChickens number or coopChickens number
-                //needs to have ability to cap at 8
-                if (outsideChickens >= 1 && coopChickens >= 1) {
-                    if (outsideChickens >= 8 && coopChickens >= 8)
-                        result_str = "You are allowed to have 8 chickens!!!";
-                    else if ((outsideArea / coopArea) >= 1)
-                        result_str = "You are allowed to have " + outsideChickens + " chickens!!!";
-                    else result_str = "You are allowed to have " + coopChickens + " chickens!!!";
-                }
-                else
-                    result_str = "You are not providing enough area for the chickens!!! BRAHHH!!!!";
-            }
-            else
-                result_str = "You have entered invalid length/with values";
-            //alert(result_str);
-            document.getElementById("chickens-response").innerHTML = result_str;
-            return result_str;
-            //mention permits for more chickens?
-        }
-    </script>
 </head>
 
 <body>
@@ -169,7 +65,6 @@
             <h2>Can I have backyard chickens???</h2>
         </div>
 
-
         <div class="address">
             <form class="form" action="#" onSubmit="addressSearch()" id="searchSubmit">
                 <input class="search" type="text" placeholder="Enter your address to find out" name="address" id="address">
@@ -182,115 +77,7 @@
         <div>
             <p>Disclaimer: Your neighborhood might have different rules than the municipality it's in. Make sure to check with them as well!</p>
         </div>
-        <form id="coopForm" style="display:none;">
-            <br />
-            Enter the dimensions of your coop and its enclosing fence to estimate how many chickens you're allowed to
-            have.
-            <br /><br />
-            Coop: <br />
-            Length:&nbsp;<input type="text" size="3" id="cwSTL" class="coopFormInput">
-            Width:&nbsp;<input type="text" size="3" id="clSTL" class="coopFormInput">
-            <br />
-            Fence: <br />
-            Length:&nbsp;<input type="text" size="3" id="fwSTL" class="coopFormInput">
-            Width:&nbsp;<input type="text" size="3" id="flSTL" class="coopFormInput">
-            <br />
-            <button type="button" id="calc-chickens" onclick="calcCityChickens();">How many chickens can I have?</button>
-        </form>
         <div id="mapid"></div>
-        <script>
-            //Set up map:
-            var mymap = L.map('mapid').setView([38.66085, -90.362549], 11);
-            L.tileLayer(
-                'https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
-                    maxZoom: 18,
-                    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
-                        '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-                        'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-                    id: 'mapbox.streets'
-                }).addTo(mymap);
-            //Initialize popup object to show information on the map:
-            var popup = L.popup();
-            //Show chicken regulations at coordinates:
-            function showRegs(coords) {
-                //Send the coordinates to OpenStreetMaps and get the returned city:
-                var queryURL = "https://nominatim.openstreetmap.org/reverse?format=json&lat=" + coords.lat + "&lon=" +
-                    coords.lng + "&zoom=18&addressdetails=1";
-                var xHR = new XMLHttpRequest();
-                xHR.addEventListener("load", function () {
-                    //Parse result:
-                    //console.log(xHR.responseText);
-                    var address = JSON.parse(xHR.responseText).address;
-                    var place = address.city;
-                    if (address.city == undefined) place = "unincorporated " + address.county;
-                    var popup_content = place + ":<br />";
-                    // Look up the regulations string for resulting location using JS Objects (hashtables):
-                    if (address.state == "Missouri") {
-                        if (address.city == undefined) {
-                            if (missouri_counties[address.county] != undefined) {
-                                popup_content += missouri_counties[address.county];
-                            } else {
-                                popup_content += "Unknown :(";
-                            }
-                        } else {
-                            if (missouri_cities[address.city] != undefined) {
-                                popup_content += missouri_cities[address.city];
-                            } else {
-                                popup_content += "Unknown :(";
-                            }
-                            if (address.city == "St. Louis") {
-                                coop_form = document.getElementById("coopForm").innerHTML;
-                                popup_content += "<form id=\"coopSTL\">" + coop_form +
-                                    "<div id=\"chickens-response\"></div></form>";
-                            }
-                        }
-                    } else {
-                        // Check Illinois too:
-                        if (address.city == undefined) {
-                            if (illinois_counties[address.county] != undefined) {
-                                popup_content += illinois_counties[address.county];
-                            } else {
-                                popup_content += "Unknown :(";
-                            }
-                        } else {
-                            if (illinois_cities[address.city] != undefined) {
-                                popup_content += illinois_cities[address.city];
-                            } else {
-                                popup_content += "Unknown :(";
-                            }
-                        }
-                    }
-                    // Show source only if regulations shown
-                    if ((missouri_counties[address.county] != undefined) || (missouri_cities[address.city] !=
-                            undefined) || (illinois_counties[address.county] != undefined) || (illinois_cities[
-                            address.city] != undefined)) {
-                        popup_content += '<br /><br />Source:<br /><a href="' + source_url + '">' + source_url +
-                            '</a>';
-                    }
-                    //Display result on the map:
-                    popup.setContent(popup_content);
-                    popup.setLatLng(coords);
-                    popup.openOn(mymap);
-                    //console.log(address.city);
-                });
-                xHR.open("GET", queryURL);
-                xHR.send();
-                //^^(I don't usually like using extra libraries like jQuery, so I used plain Javascript.)
-            }
-            //Set up handler function for click events:
-            function onMapClick(e) {
-                /*
-                //Example code:
-                popup
-                    .setLatLng(e.latlng)
-                    .setContent("You clicked the map at " + e.latlng.toString())
-                    .openOn(mymap);
-                */
-                //Get containing city and display it on the map:
-                showRegs(e.latlng);
-            }
-            mymap.on('click', onMapClick);
-        </script>
     </section>
 
     <footer class="end">
