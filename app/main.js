@@ -14,7 +14,66 @@ $(document).ready(function () {
   //Initialize popup object to show information on the map:
   var popup = L.popup();
 
+<<<<<<< HEAD
   
+=======
+
+  // Function to calculate how many chickens allowed for a St. Louis City address
+  function calcCityChickens() {
+    console.log('calcCityChickens');
+      //String used to display the determined chicken eligibility:
+      var result_str;
+      //city of saint louis
+      //started walter jenkins
+      //the city of saint louis requires that the individual have a 4 sq feet to 1 chicken for outdoor space
+      //there is also to be 1 sq foot of indoor space for each chickens
+      //there is a maximum of 8 chickens allowed in the city of saint louis without a permit
+      //the purpose of this code is to estimate based on the user's parameters how many chickens they are allowed to have
+      //user coop width and length
+      var coopWidth = document.forms["coopSTL"]["cwSTL"].value;
+      console.log(coopWidth);
+      var input_valid = true;
+      if (coopWidth == "") //needs to ensure that it is also an integer
+          input_valid = false;
+      var coopLength = document.forms["coopSTL"]["clSTL"].value;
+      if (coopLength == "") //needs to ensure that it is also an integer
+          input_valid = false;
+      //user fence width and length
+      var fenceWidth = document.forms["coopSTL"]["fwSTL"].value;
+      if (fenceWidth == "") //needs to ensure that it is also an integer
+          input_valid = false;
+      var fenceLength = document.forms["coopSTL"]["flSTL"].value;
+      if (fenceLength == "") //needs to ensure that it is also an integer
+          input_valid = false;
+      if (input_valid) {
+          //calculation of fence and coop area
+          var fenceArea = fenceWidth * fenceLength;
+          var coopArea = coopLength * coopWidth;
+          //calculation of outside space minus the footprint of the coop
+          var outsideArea = fenceArea - coopArea;
+          //calculation of the amount of chickens for both the inside and outside separately
+          var outsideChickens = Math.floor((outsideArea / 4));
+          var coopChickens = Math.floor((coopArea / 1));
+          //determining if you use the outsideChickens number or coopChickens number
+          //needs to have ability to cap at 8
+          if (outsideChickens >= 1 && coopChickens >= 1) {
+              if (outsideChickens >= 8 && coopChickens >= 8)
+                  result_str = "You are allowed to have 8 chickens!!!";
+              else if ((outsideArea / coopArea) >= 1)
+                  result_str = "You are allowed to have " + outsideChickens + " chickens!!!";
+              else result_str = "You are allowed to have " + coopChickens + " chickens!!!";
+          }
+          else
+              result_str = "You are not providing enough area for the chickens!!! BRAHHH!!!!";
+      }
+      else
+          result_str = "You have entered invalid length/with values";
+      //alert(result_str);
+      document.getElementById("chickens-response").innerHTML = result_str;
+      return result_str;
+      //mention permits for more chickens?
+}
+>>>>>>> 23da35af7d785c500f771b59b1142556280c2086
   /**
    * Given all the location information, creates the formatted text to go into the popup.
    */
@@ -37,7 +96,11 @@ $(document).ready(function () {
         } else {
           popup_content += "Unknown :(";
         }
+<<<<<<< HEAD
         if (city == "Saint Louis") {
+=======
+        if (city == "St Louis") {
+>>>>>>> 23da35af7d785c500f771b59b1142556280c2086
            coop_form = document.getElementById("coopForm").innerHTML;
            popup_content += "<form id=\"coopSTL\">" + coop_form +
              "<div id=\"chickens-response\"></div></form>";
@@ -105,7 +168,17 @@ $(document).ready(function () {
     showRegsAddress(input);
   });
 
+  // setup click handler for when the "How many chickens can I have?" button is clicked,
+  // run our "calcCityChickens" function.
+  // We are using a ".on" as a "Delegated event handler" here because Leaflet creates the
+  // popup dynamically so doing $("#calcChickens").click(...) will not work. 
+  // See "Direct and delegated event handlers" section here: http://api.jquery.com/on/
+  $('body').on('click', "#calcChickens", function() {
+    calcCityChickens();
+  });
+
   // SETUP AUTOCOMPLETE
+  // for options see here: http://api.jqueryui.com/autocomplete/
   $("#address").autocomplete({
     source: function (request, response) {
       arcgisRest.suggest(request.term, {
