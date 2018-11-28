@@ -14,9 +14,6 @@ $(document).ready(function () {
   //Initialize popup object to show information on the map:
   var popup = L.popup();
 
-<<<<<<< HEAD
-  
-=======
 
   // Function to calculate how many chickens allowed for a St. Louis City address
   function calcCityChickens() {
@@ -73,7 +70,6 @@ $(document).ready(function () {
       return result_str;
       //mention permits for more chickens?
 }
->>>>>>> 23da35af7d785c500f771b59b1142556280c2086
   /**
    * Given all the location information, creates the formatted text to go into the popup.
    */
@@ -96,11 +92,7 @@ $(document).ready(function () {
         } else {
           popup_content += "Unknown :(";
         }
-<<<<<<< HEAD
-        if (city == "Saint Louis") {
-=======
         if (city == "St Louis") {
->>>>>>> 23da35af7d785c500f771b59b1142556280c2086
            coop_form = document.getElementById("coopForm").innerHTML;
            popup_content += "<form id=\"coopSTL\">" + coop_form +
              "<div id=\"chickens-response\"></div></form>";
