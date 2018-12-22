@@ -140,7 +140,6 @@ button[type="submit"] {
   /*vertical-align: top;
     display: inline;*/
 
-  =======margin: 10px;
 }
 
 .form {
@@ -195,13 +194,11 @@ textarea {
 
 
 .end {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+  text-align: center;
   bottom: 0;
   width: 100%;
   margin-top: 11vh;
   height: 100px;
-
 }
 
 .chicken2 {
@@ -257,7 +254,6 @@ textarea {
 
   .end>img {
     background-color: var(--blue);
-    width: 100%;
     height: 100%;
   }
 
@@ -277,7 +273,11 @@ textarea {
     textarea {
       background-color: VAR(--blue);
       font-size: 30px;
-      width: 800px;
+      width: 100%;
+    }
+
+    .address {
+      width: 100%;
     }
 
   }
@@ -323,13 +323,6 @@ textarea {
       overflow: hidden;
     }
 
-    input[type="text"],
-    textarea {
-      background-color: VAR(--blue);
-      font-size: 25px;
-      width: 290px;
-    }
-
     .instructions {
       font-size: 15px;
       overflow: hidden;
@@ -338,8 +331,8 @@ textarea {
     input[type="text"],
     textarea {
       background-color: VAR(--blue);
-      font-size: 25px;
-      width: 620px;
+      font-size: 18px;
+      width: 100%;
     }
 
     input[class="coopFormInput"],
@@ -393,5 +386,9 @@ textarea {
     body {
       padding-top: -500px;
       top: 0;
+    }
+    button[type="submit"] {
+      height: 30px;
+      font-size: 30px;
     }
   }
