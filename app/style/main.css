@@ -50,9 +50,9 @@ body {
 
 .menu ul {
   display: grid;
-  padding: 0;
+  padding: 50;
   list-style: none;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(0px, 1fr));
   overflow: hidden;
   justify-items: center;
 }
@@ -108,6 +108,14 @@ body {
 }
 
 #mapid {
+  width: 80%;
+  height: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+#about {
   width: 80%;
   height: 600px;
   margin-left: auto;
