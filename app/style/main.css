@@ -12,15 +12,17 @@
 
 body {
   font-family: "Roboto", sans-serif;
+  font-size: 12px;
+  margin: 0px;
   background-color: var(--blue);
 }
 
 .top {
   display: grid;
   background-color: white;
-  margin: -5px;
-  border-bottom: 2px solid var(--black);
-  grid-template-areas: "logo logo menu menu";
+  padding: 10px;
+  border-bottom: 5px solid var(--dblue);
+  grid-template-areas: "logo menu menu menu";
 }
 
 .logo {
@@ -33,7 +35,7 @@ body {
   margin-left: 5px;
   display: inline !important;
   padding: 0.5px;
-  font-size: 30px;
+  font-size: 3rem;
 }
 
 #orange {
@@ -57,6 +59,10 @@ body {
   justify-items: center;
 }
 
+.menu ul li{
+  padding: 5px;
+}
+
 .menu a {
   text-decoration: none;
   color: var(--black);
@@ -69,38 +75,41 @@ body {
 }
 
 .middle {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
   max-width: 1200px;
   margin: 10px auto;
-  justify-items: center !important;
-  text-align: center;
+  //justify-items: center !important;
   background-color: var(--blue);
   margin-bottom: 25px;
 }
-
-.instructions {
-  font-size: 20px;
-  overflow: nowrap;
+.middle p{
   text-align: center;
-  margin: 10px;
+}
+.instructions h2{
+  display: block;
+  position: relative;
+  width: 326px;
+  font-size: 1.4rem;
+  font-style: italic;
+  font-weight: 300;
+  padding: 1.4rem;
+  margin: 0px auto;
 }
 
 .address {
-  display: inline;
+  display: inline-block;
   vertical-align: middle;
-  margin-top: auto;
-  margin-bottom: auto;
-  align: center;
-  width: 65%;
+  text-align: center;
+  width: 100%;
+  margin-bottom: 40px;
 }
 
 .form {
-  float: left;
-  vertical-align: middle;
+  display: block;
+  margin: 0px auto;
+  text-align: center;
   width: 100%;
+  max-width: 800px;
 }
-
 
 #map-container {
   width: 100%;
@@ -115,7 +124,7 @@ body {
 }
 
 button[type="submit"] {
-  width: 60px;
+  width: 100%;
   background-repeat: no-repeat;
   background-color: var(--blue);
   background-position: 0px 0px;
@@ -126,7 +135,8 @@ button[type="submit"] {
   /* make the cursor like hovering over an <a> element */
   height: 60px;
   /* make this the size of your image */
-  font-size: 40px;
+  font-size: 2.2rem;
+  line-height: 3rem;
   margin-top: auto;
   margin-bottom: auto;
   /*vertical-align: top;
@@ -134,39 +144,11 @@ button[type="submit"] {
 
 }
 
-.form {
-  float: left;
-  align-items: middle;
-  max-width: 600px;
-  width: 80%;
-}
-
-button[type="submit"] {
-  width: 60px;
-  background-repeat: no-repeat;
-  background-color: var(--blue);
-  background-position: 0px 0px;
-  /* equivalent to 'top left' */
-  border: none;
-  /* assuming we don't want any borders */
-  cursor: pointer;
-  /* make the cursor like hovering over an <a> element */
-  height: 50px;
-  /* make this the size of your image */
-  font-size: 40px;
-  align-self: center;
-  vertical-align: top;
-  display: inline;
-}
-
 input[id="address"],
 textarea {
-  <<<<<<< HEAD background-color: VAR(--blue);
-  font-size: 30px;
   background-color: VAR(--blue);
-  font-size: 30px;
-  max-width: 600px;
-
+  font-size: 2rem;
+  background-color: VAR(--blue);
 }
 
 input[class="coopFormInput"],
@@ -181,7 +163,8 @@ textarea {
   border-radius: 150px;
   border: 2px solid var(--dblue);
   text-align: center;
-  display: inline vertical-align: top;
+  display: inline; 
+  vertical-align: top;
 }
 
 
@@ -218,6 +201,7 @@ textarea {
 @media (max-width: 1100px) {
   .top>.logo {
     justify-self: center;
+    text-align: center;
   }
 
   .top {
@@ -240,6 +224,9 @@ textarea {
   }
 
 @media (max-width: 800px) {
+  .logo h1{
+    text-align: center;
+  }
   .top {
     justify-items: center;
   }
@@ -252,7 +239,7 @@ textarea {
   input[id="address"],
   textarea {
     background-color: VAR(--blue);
-    font-size: 30px;
+    font-size: 2rem;
   }
 }
 
@@ -264,7 +251,7 @@ textarea {
     input[id="address"],
     textarea {
       background-color: VAR(--blue);
-      font-size: 30px;
+      font-size: 2rem;
       width: 100%;
     }
 
@@ -282,16 +269,15 @@ textarea {
     }
 
     .menu {
-      justify-self: end;
-      margin-right: 5px;
+   
     }
 
     .menu ul {
-      margin-right: 28vw;
+     
     }
 
     .middle {
-      margin-top: 60px;
+
     }
 
     .end>img {
@@ -301,7 +287,7 @@ textarea {
     input[id="address"],
     textarea {
       background-color: VAR(--blue);
-      font-size: 30px;
+      font-size: 2rem;
     }
 
 
@@ -310,20 +296,19 @@ textarea {
   @media (max-width: 320px),
   screen and (max-height: 700px) {
     .instructions {
-      margin-top: -50px;
-      font-size: 15px;
+      font-size: 1.2rem;
       overflow: hidden;
     }
 
     .instructions {
-      font-size: 15px;
+      font-size: 1.2rem;
       overflow: hidden;
     }
 
     input[type="text"],
     textarea {
       background-color: VAR(--blue);
-      font-size: 18px;
+      font-size: 1.4rem;
       width: 100%;
     }
 
@@ -335,15 +320,15 @@ textarea {
     }
 
     .menu a {
-      margin-left: 18vw;
+      
     }
 
     .menu>* {
-      margin-left: 8vw;
+      
     }
 
     ul {
-      margin-right: 10vw;
+     
     }
 
 
@@ -355,15 +340,15 @@ textarea {
     }
 
     .menu a {
-      margin-left: 18vw;
+     
     }
 
     .menu>* {
-      margin-left: 8vw;
+      
     }
 
     ul {
-      margin-right: 10vw;
+      
     }
 
     .end {
@@ -371,8 +356,8 @@ textarea {
     }
 
     img {
-      margin-top: 2vw;
-      height: 1vh;
+      
+   
     }
 
     body {
@@ -380,7 +365,7 @@ textarea {
       top: 0;
     }
     button[type="submit"] {
-      height: 30px;
-      font-size: 30px;
+      height: 2rem;
+      font-size: 2rem;
     }
   }
