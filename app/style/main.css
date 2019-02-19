@@ -10,6 +10,19 @@
   z-index: 400 !important;
 } 
 
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: #b3d1ed;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  color: #b3d1ed;
+}
+:-ms-input-placeholder { /* IE 10+ */
+  color: #b3d1ed;
+}
+:-moz-placeholder { /* Firefox 18- */
+  color: #b3d1ed;
+}
+
 body {
   font-family: "Roboto", sans-serif;
   font-size: 12px;
@@ -74,14 +87,9 @@ body {
   color: var(--orange);
 }
 
-.middle>* {
-  grid-column: 2/-2;
-}
-
 .middle {
   max-width: 1200px;
   margin: 10px auto;
-  //justify-items: center !important;
   background-color: var(--blue);
   margin-bottom: 25px;
 }
@@ -147,10 +155,11 @@ button[type="submit"] {
 
 input[id="address"],
 textarea {
-  background-color: VAR(--blue);
-  font-size: 2rem;
+  background-color: white;
+  font-size: 1.4rem;
+  font-weight: 200;
   line-height: 3rem;
-  background-color: VAR(--blue);
+  margin: 2px;
 }
 
 input[class="coopFormInput"],
@@ -168,7 +177,11 @@ textarea {
   display: inline; 
   vertical-align: top;
 }
-
+.search.ui-autocomplete-input:focus {
+  border-radius: 150px;
+  box-shadow: 0 0 3px 2px hsl(200, 100%, 75%);
+  outline: none;
+}
 
 .end {
   text-align: center;
@@ -182,18 +195,7 @@ textarea {
   transform: scaleX(-1);
 }
 
-@media (max-width : 1920px) {
-  input {
-      padding-right: 0;
-      padding-left: 0;
-  }
-}
 @media (max-width: 1920px) {
-  input {
-    padding-right: 0;
-    padding-left: 0;
-  }
-
   textarea {
     background-color: VAR(--blue);
     font-size: 30px;
@@ -213,18 +215,6 @@ textarea {
   }
 }
 
-  @media (max-width: 940px) {
-
-    input[id="address"],
-    textarea {
-      background-color: VAR(--blue);
-      font-size: 30px;
-      width: 700px;
-    }
-
-
-  }
-
 @media (max-width: 800px) {
   .logo h1{
     text-align: center;
@@ -232,36 +222,11 @@ textarea {
   .top {
     justify-items: center;
   }
-
   .end>img {
     background-color: var(--blue);
     height: 100%;
   }
-
-  input[id="address"],
-  textarea {
-    background-color: VAR(--blue);
-    font-size: 2rem;
-  }
 }
-
-  @media (max-width: 750px) {
-    .end>img {
-      height: -100vh;
-    }
-
-    input[id="address"],
-    textarea {
-      background-color: VAR(--blue);
-      font-size: 2rem;
-      width: 100%;
-    }
-
-    .address {
-      width: 100%;
-    }
-
-  }
 
   @media (max-width: 528px) {
     .top {
@@ -269,30 +234,9 @@ textarea {
         "logo"
         "menu";
     }
-
-    .menu {
-   
-    }
-
-    .menu ul {
-     
-    }
-
-    .middle {
-
-    }
-
     .end>img {
       margin-left: 20px;
     }
-
-    input[id="address"],
-    textarea {
-      background-color: VAR(--blue);
-      font-size: 2rem;
-    }
-
-
   }
 
   @media (max-width: 320px),
@@ -301,73 +245,10 @@ textarea {
       font-size: 1.2rem;
       overflow: hidden;
     }
-
-    .instructions {
-      font-size: 1.2rem;
-      overflow: hidden;
-    }
-
-    input[type="text"],
-    textarea {
-      background-color: VAR(--blue);
-      font-size: 1.4rem;
-      width: 100%;
-    }
-
     input[class="coopFormInput"],
     textarea {
       padding-left: 0;
       padding-right: 0;
       width: 35px;
-    }
-
-    .menu a {
-      
-    }
-
-    .menu>* {
-      
-    }
-
-    ul {
-     
-    }
-
-
-    input[class="coopFormInput"],
-    textarea {
-      padding-left: 0;
-      padding-right: 0;
-      width: 35px;
-    }
-
-    .menu a {
-     
-    }
-
-    .menu>* {
-      
-    }
-
-    ul {
-      
-    }
-
-    .end {
-      margin-top: 5px;
-    }
-
-    img {
-      
-   
-    }
-
-    body {
-      padding-top: -500px;
-      top: 0;
-    }
-    button[type="submit"] {
-      height: 2rem;
-      font-size: 2rem;
     }
   }
