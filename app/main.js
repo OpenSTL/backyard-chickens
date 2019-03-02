@@ -47,22 +47,24 @@ $(document).ready(function () {
           //calculation of outside space minus the footprint of the coop
           var outsideArea = fenceArea - coopArea;
           //calculation of the amount of chickens for both the inside and outside separately
-          var outsideChickens = Math.floor((outsideArea / 4));
-          var coopChickens = Math.floor((coopArea / 1));
+          const outsideChickens = Math.floor((outsideArea / 4));
+          const coopChickens = Math.floor((coopArea / 1));
           //determining if you use the outsideChickens number or coopChickens number
           //needs to have ability to cap at 8
           if (outsideChickens >= 1 && coopChickens >= 1) {
-              if (outsideChickens >= 8 && coopChickens >= 8)
+              if (outsideChickens >= 8 && coopChickens >= 8) {
                   result_str = "You are allowed to have 8 chickens!!!";
-              else if ((outsideArea / coopArea) >= 1)
+              } else if ( coopChickens >= outsideChickens) {
                   result_str = "You are allowed to have " + outsideChickens + " chickens!!!";
-              else result_str = "You are allowed to have " + coopChickens + " chickens!!!";
+              } else {
+                  result_str = "You are allowed to have " + coopChickens + " chickens!!!";
+              }
           }
           else
               result_str = "You are not providing enough area for the chickens!!! BRAHHH!!!!";
       }
       else
-          result_str = "You have entered invalid length/with values";
+          result_str = "You have entered invalid length/width values";
       //alert(result_str);
       document.getElementById("chickens-response").innerHTML = result_str;
       return result_str;
