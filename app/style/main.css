@@ -94,10 +94,15 @@ body {
   margin-bottom: 25px;
 }
 .middle p{
+  font-size: 15px;
   text-align: center;
   width: 80%;
   margin: 0px auto;
-  padding: 10px 0px;
+}
+.middle h1 {
+  font-size: 30px;
+  text-align: center;
+  color: #eb6852;
 }
 .instructions h2{
   display: block;
@@ -147,8 +152,8 @@ body {
 
 
 #about {
+  
   width: 80%;
-  height: 600px;
   margin-left: auto;
   margin-right: auto;
 }
