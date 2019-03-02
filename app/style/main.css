@@ -109,13 +109,20 @@ body {
   padding: 1.4rem;
   margin: 0px auto;
 }
+.search-container{
+  width: 80%;
+  display: inline-block;
+
+}
 
 .address {
   display: inline-block;
   vertical-align: middle;
-  text-align: center;
+  text-align: left;
   width: 100%;
   margin-bottom: 40px;
+  margin-left: 10%;
+  
 }
 
 .form {
@@ -147,11 +154,7 @@ body {
 }
 
 button[type="submit"] {
-  width: 100%;
-  background-repeat: no-repeat;
-  background-color: var(--blue);
-  background-position: 0px 0px;
-  padding: 1.4rem;
+  background-color: #eff7fe;
   border: none;
   cursor: pointer;
   height: 60px;
@@ -159,6 +162,7 @@ button[type="submit"] {
   line-height: 3rem;
   margin-top: auto;
   margin-bottom: auto;
+  float: right;
 }
 
 input[id="address"],
@@ -168,6 +172,8 @@ textarea {
   font-weight: 200;
   line-height: 3rem;
   margin: 2px;
+  width: 90%;
+  float: left;
 }
 
 input[class="coopFormInput"],
