@@ -196,7 +196,6 @@ textarea {
 }
 
 .search {
-  width: 100%;
   border-radius: 150px;
   border: 2px solid var(--dblue);
   text-align: center;
