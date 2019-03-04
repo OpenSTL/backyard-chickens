@@ -71,6 +71,7 @@ body {
   grid-area: menu;
 }
 
+
 .menu ul {
   display: grid;
   padding: 50;
@@ -257,6 +258,14 @@ textarea {
     grid-template-areas:
       "logo"
       "menu";
+  }
+  
+  ul.menu-list {
+    float: right;
+  }
+  
+  .menu ul {
+    grid-template-columns: 200px 200px;
   }
 }
 
