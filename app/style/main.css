@@ -262,6 +262,7 @@ textarea {
   
   ul.menu-list {
     float: right;
+    padding-right: 20px;
   }
   
   .menu ul {
