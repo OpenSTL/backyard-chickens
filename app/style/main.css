@@ -36,6 +36,13 @@ body {
   padding: 10px;
   border-bottom: 5px solid var(--dblue);
   grid-template-areas: "logo menu menu menu";
+
+}
+
+#logo-div {
+  height: 100%;
+  vertical-align: middle;
+  margin-top: -20px;
 }
 
 .logo {
@@ -243,6 +250,8 @@ textarea {
   .top>.logo {
     justify-self: center;
     text-align: center;
+    vertical-align: middle;
+    padding: 1000px;
   }
 
   .top {
