@@ -42,7 +42,7 @@ body {
 #logo-div {
   height: 100%;
   vertical-align: middle;
-  margin-top: -20px;
+  margin-top: -25px;
 }
 
 .logo {
@@ -69,16 +69,17 @@ body {
 
 .menu {
   grid-area: menu;
+  float:left;
 }
 
 
 .menu ul {
   display: grid;
-  padding: 50;
   list-style: none;
-  grid-template-columns: repeat(auto-fit, minmax(0px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(0px, 175px));
   overflow: hidden;
   justify-items: center;
+  
 }
 
 .menu ul li{
@@ -197,7 +198,6 @@ textarea {
 }
 
 .search {
-  width: 100%;
   border-radius: 150px;
   border: 2px solid var(--dblue);
   text-align: center;
@@ -245,7 +245,7 @@ textarea {
     background-color: VAR(--blue);
     font-size: 30px;
     width: 800px;
-  }
+  }  
 }
 @media (max-width: 1100px) {
   .top>.logo {
@@ -287,6 +287,18 @@ textarea {
   .end>img {
     background-color: var(--blue);
     height: 100%;
+  }
+  .menu ul {
+    grid-template-columns: none;
+  }
+  input[id="address"],
+textarea {
+  width: 100%;
+  }
+  button[type="submit"] {
+    float: inherit;
+    padding-left: 48%;
+    padding-top: 20px;
   }
 }
 
