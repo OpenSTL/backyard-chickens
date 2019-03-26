@@ -17,7 +17,6 @@ $(document).ready(function () {
 
   // Function to calculate how many chickens allowed for a St. Louis City address
   function calcCityChickens() {
-    console.log('calcCityChickens');
       //String used to display the determined chicken eligibility:
       var result_str;
       //city of saint louis
@@ -28,7 +27,6 @@ $(document).ready(function () {
       //the purpose of this code is to estimate based on the user's parameters how many chickens they are allowed to have
       //user coop width and length
       var coopWidth = document.forms["coopSTL"]["cwSTL"].value;
-      console.log(coopWidth);
       var input_valid = true;
       if (coopWidth == "") //needs to ensure that it is also an integer
           input_valid = false;
@@ -49,22 +47,24 @@ $(document).ready(function () {
           //calculation of outside space minus the footprint of the coop
           var outsideArea = fenceArea - coopArea;
           //calculation of the amount of chickens for both the inside and outside separately
-          var outsideChickens = Math.floor((outsideArea / 4));
-          var coopChickens = Math.floor((coopArea / 1));
+          const outsideChickens = Math.floor((outsideArea / 4));
+          const coopChickens = Math.floor((coopArea / 1));
           //determining if you use the outsideChickens number or coopChickens number
           //needs to have ability to cap at 8
           if (outsideChickens >= 1 && coopChickens >= 1) {
-              if (outsideChickens >= 8 && coopChickens >= 8)
+              if (outsideChickens >= 8 && coopChickens >= 8) {
                   result_str = "You are allowed to have 8 chickens!!!";
-              else if ((outsideArea / coopArea) >= 1)
+              } else if ( coopChickens >= outsideChickens) {
                   result_str = "You are allowed to have " + outsideChickens + " chickens!!!";
-              else result_str = "You are allowed to have " + coopChickens + " chickens!!!";
+              } else {
+                  result_str = "You are allowed to have " + coopChickens + " chickens!!!";
+              }
           }
           else
               result_str = "You are not providing enough area for the chickens!!! BRAHHH!!!!";
       }
       else
-          result_str = "You have entered invalid length/with values";
+          result_str = "You have entered invalid length/width values";
       //alert(result_str);
       document.getElementById("chickens-response").innerHTML = result_str;
       return result_str;
@@ -81,14 +81,14 @@ $(document).ready(function () {
     // Look up the regulations string for resulting location using JS Objects (hashtables):
     if (state == "Missouri") {
       if (city == undefined || city == '') {
-        if (missouri_counties[county] != undefined) {
-          popup_content += missouri_counties[county];
+        if (regsData.missouri.counties[county] != undefined) {
+          popup_content += regsData.missouri.counties[county];
         } else {
           popup_content += "Unknown :(";
         }
       } else {
-        if (missouri_cities[city] != undefined) {
-          popup_content += missouri_cities[city];
+        if (regsData.missouri.cities[city] != undefined) {
+          popup_content += regsData.missouri.cities[city];
         } else {
           popup_content += "Unknown :(";
         }
@@ -101,26 +101,27 @@ $(document).ready(function () {
     } else {
       // Check Illinois too:
       if (city == undefined || city == '') {
-        if (illinois_counties[county] != undefined) {
-          popup_content += illinois_counties[county];
+        if (regsData.illinois.counties[county] != undefined) {
+          popup_content += regsData.illinois.counties[county];
         } else {
           popup_content += "Unknown :(";
         }
       } else {
-        if (illinois_cities[city] != undefined) {
-          popup_content += illinois_cities[city];
+        if (regsData.illinois.cities[city] != undefined) {
+          popup_content += regsData.illinois.cities[city];
         } else {
           popup_content += "Unknown :(";
         }
       }
     }
     // Show source only if regulations shown
-    if ((missouri_counties[county] != undefined) || (missouri_cities[city] !=
-      undefined) || (illinois_counties[county] != undefined) || (illinois_cities[
+    if ((regsData.missouri.counties[county] != undefined) || (regsData.missouri.cities[city] !=
+      undefined) || (regsData.illinois.counties[county] != undefined) || (regsData.illinois.cities[
         city] != undefined)) {
-      popup_content += '<br /><br />Source:<br /><a href="' + source_url + '">' + source_url +
+      popup_content += '<br /><br />Source:<br /><a href="' + regsData.source.url + '">' + regsData.source.url +
         '</a>';
     }
+
     //Display result on the map:
     popup.setContent(popup_content);
     popup.setLatLng(coords);
@@ -193,4 +194,10 @@ $(document).ready(function () {
       showRegsAddress(ui.item.value);
     }
   });
+
+  // load the JSON regs data dynamically.
+  var regsData = {};
+  $.get( "regs_data.json", function( data ) {
+    regsData = data;
+  }, 'json');
 });
