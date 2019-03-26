@@ -29,7 +29,9 @@ body {
   margin: 0px;
   background-color: var(--blue);
 }
-
+body p{
+  padding: 10px 0px;
+}
 .top {
   display: grid;
   background-color: white;
@@ -97,14 +99,15 @@ body {
 
 .middle {
   max-width: 1200px;
-  margin: 10px auto;
+  margin: 20px auto;
   background-color: var(--blue);
   margin-bottom: 25px;
 }
 .middle p{
-  font-size: 18px;
+  font-size: 16px;
   text-align: center;
-  width: 90%;
+  width: 75%;
+  padding: 20px 30px;
   margin: 0px auto;
 }
 .middle h1 {
@@ -123,7 +126,7 @@ body {
   margin: 0px auto;
 }
 .search-container{
-  width: 80%;
+  width: 100%;
   display: inline-block;
 
 }
@@ -133,9 +136,7 @@ body {
   vertical-align: middle;
   text-align: left;
   width: 100%;
-  margin-bottom: 40px;
-  margin-left: 10%;
-  
+  margin-bottom: 20px;
 }
 
 .form {
@@ -175,13 +176,13 @@ button[type="submit"] {
   line-height: 3rem;
   margin-top: auto;
   margin-bottom: auto;
-  float: right;
+  float: left;
 }
 
 input[id="address"],
 textarea {
   background-color: white;
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   font-weight: 200;
   line-height: 3rem;
   margin: 2px;
@@ -219,9 +220,9 @@ textarea {
 
 #chickens-end {
   width: 100%;
-  height: 90%;
-  padding: 10px;
-  
+}
+#chickens-end img{
+  width: 10%;
 }
 
 #links {
@@ -238,6 +239,9 @@ textarea {
 .chicken2 {
   transform: scaleX(-1);
 }
+#about p{
+  text-align: left;
+}
 
 @media (max-width: 1920px) {
   textarea {
@@ -252,15 +256,21 @@ textarea {
     text-align: center;
     vertical-align: middle;
   }
+  ul.menu-list {
+    float: right;
+    padding-right: 20px;
+  }
+  .menu ul {
+    grid-template-columns: 200px 200px;
+  }
+}
 
+@media (max-width: 800px) {
   .top {
     grid-template-areas:
       "logo"
       "menu";
   }
-}
-
-@media (max-width: 800px) {
   .logo h1{
     text-align: center;
   }
@@ -271,7 +281,7 @@ textarea {
     text-align: center;
     bottom: 0;
     width: 100%;
-    margin-top: 11vh;
+    margin-top: 0px;
     height: 100px;
   }
   .end>img {
@@ -281,25 +291,29 @@ textarea {
   .menu ul {
     grid-template-columns: none;
   }
+  .address{
+    margin-left: 0px;
+  }
   input[id="address"],
 textarea {
-  width: 100%;
-  }
-  button[type="submit"] {
-    float: inherit;
-    padding-left: 48%;
-    padding-top: 20px;
+  width: 80%;
   }
 }
 
   @media (max-width: 528px) {
     .top {
+      padding-top: 40px;
       grid-template-areas:
         "logo"
         "menu";
     }
     .end>img {
       margin-left: 20px;
+      
+    }
+    #chickens-end img{
+      width: 10%;
+      height: auto;
     }
   }
 
